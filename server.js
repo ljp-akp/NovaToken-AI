@@ -25,18 +25,20 @@ const response = await fetch("https://aix.6os.net/v1/chat/completions", {
   })
 });
 
-        const data = await response.json();
+const data = await response.json();
 
-        res.json({
-    reply: data.choices?.[0]?.message?.content || "没有返回内容"
+console.log("HTTP 状态：", response.status);
+console.log("AI 返回：", data);
+
+if (!response.ok) {
+  return res.status(response.status).json({
+    reply: JSON.stringify(data)
+  });
+}
+
+res.json({
+  reply: data.choices?.[0]?.message?.content || "没有返回内容"
 });
-
-    } catch (err) {
-    console.error(err);
-
-    res.status(500).json({
-        reply: "服务器错误"
-    });
 }
 });
 
