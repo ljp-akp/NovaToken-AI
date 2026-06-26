@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaToken AI Chat</title>
 
+<style>
+body{
+    margin:0;
+    background:#0f172a;
+    color:#fff;
+    font-family:Arial;
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+}
+
+header{
+    padding:20px;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    border-bottom:1px solid #222;
+}
+
+#chat{
+    flex:1;
+    padding:20px;
+    overflow:auto;
+}
+
+.message{
+    background:#1e293b;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+
+.bottom{
+    display:flex;
+    padding:15px;
+    background:#111827;
+}
+
+input{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+}
+
+button{
+    margin-left:10px;
+    padding:12px 20px;
+    border:none;
+    background:#3b82f6;
+    color:white;
+    border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<header>🚀 NovaToken AI</header>
+
+<div id="chat">
+<div class="message">你好，我是 NovaToken AI。</div>
+</div>
+
+<div class="bottom">
+<input id="msg" placeholder="请输入内容...">
+<button onclick="send()">发送</button>
+</div>
+
+<script>
+function send(){
+    let input=document.getElementById("msg");
+    let chat=document.getElementById("chat");
+
+    if(input.value=="") return;
+
+    chat.innerHTML += "<div class='message'>👤 "+input.value+"</div>";
+    chat.innerHTML += "<div class='message'>🤖 AI 回复：" + input.value + "</div>";
+
+    input.value="";
+    chat.scrollTop=chat.scrollHeight;
+}
+</script>
+
+</body>
+</html>
