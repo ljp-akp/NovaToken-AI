@@ -28,8 +28,8 @@ app.post("/v1/chat/completions", async (req, res) => {
         const data = await response.json();
 
         res.json({
-            reply: data.choices[0].message.content
-        });
+    reply: data.choices?.[0]?.message?.content || "没有返回内容"
+});
 
     } catch (err) {
         res.status(500).json({
