@@ -89,21 +89,15 @@ async function send() {
     input.value = "";
 
     try {
-
-        const res = await fetch("https://ai-api-proxy-production-bd44.up.railway.app/v1/chat/completions",{
-
-            method:"POST",
-
-            headers:{
-                "Content-Type":"application/json"
-            },
-
-            body:JSON.stringify({
-                message:message
-            })
-
-        });
-
+const res = await fetch("https://ai-api-proxy-production-3b43.up.railway.app/v1/chat/completions", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        message: message
+    })
+});
         const data = await res.json();
 
         chat.innerHTML += `<div class="message">🤖 ${data.reply}</div>`;
