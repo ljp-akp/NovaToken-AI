@@ -20,13 +20,22 @@ app.post("/v1/chat/completions", async (req, res) => {
         const response = await fetch("https://aix.6os.net/v1/chat/completions", {
 
             method: "POST",
-
-            headers: {
-await fetch("https://aix.6os.net/v1/chat/completions", {
-                "Content-Type": "application/json"
-
-            },
-
+const response = await fetch("https://aix.6os.net/v1/chat/completions", {
+    method: "POST",
+    headers: {
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        model: "gpt-4o-mini",
+        messages: [
+            {
+                role: "user",
+                content: req.body.message
+            }
+        ]
+    })
+});
             body: JSON.stringify({
 
                 model: "gpt-4o-mini",
