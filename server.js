@@ -22,9 +22,7 @@ app.post("/v1/chat/completions", async (req, res) => {
             method: "POST",
 
             headers: {
-
-                Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-
+await fetch("https://aix.6os.net/v1/chat/completions", {
                 "Content-Type": "application/json"
 
             },
