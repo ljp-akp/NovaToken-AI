@@ -11,7 +11,7 @@ app.post("/v1/chat/completions", async (req, res) => {
 const response = await fetch("https://aix.6os.net/v1/chat/completions", {
   method: "POST",
   headers: {
-    "Authorization": "Bearer sk-rTQKF5k81tKU9YMNllA3H0DDxuyojLhgo88sbXWDTxdPQnMH",
+"Authorization": `Bearer ${process.env.API_KEY}`,
     "Content-Type": "application/json"
   },
   body: JSON.stringify({
