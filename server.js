@@ -32,10 +32,12 @@ app.post("/v1/chat/completions", async (req, res) => {
 });
 
     } catch (err) {
-        res.status(500).json({
-            reply: "服务器错误"
-        });
-    }
+    console.error(err);
+
+    res.status(500).json({
+        reply: "服务器错误"
+    });
+}
 });
 
 app.listen(process.env.PORT || 3000, () => {
