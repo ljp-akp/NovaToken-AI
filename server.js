@@ -33,14 +33,18 @@ app.post("/v1/chat/completions", async (req, res) => {
         });
 const data = await response.json();
 
-console.log("返回数据：", data);
-        console.log(data);
+console.log("HTTP状态：", response.status);
+console.log("返回数据：", JSON.stringify(data, null, 2));
 
-        if (!response.ok) {
-            return res.status(response.status).json({
-                reply: JSON.stringify(data)
-            });
-        }
+if (!response.ok) {
+    return res.status(response.status).json({
+        reply: JSON.stringify(data)
+    });
+}
+
+return res.json({
+    reply: data.choices?.[0]?.message?.content || JSON.stringify(data)
+});
 console.log("最终回复：", data.choices?.[0]?.message?.content);
 
 res.json({
