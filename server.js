@@ -31,9 +31,9 @@ app.post("/v1/chat/completions", async (req, res) => {
                 ]
             })
         });
+const data = await response.json();
 
-        const data = await response.json();
-
+console.log("返回数据：", data);
         console.log(data);
 
         if (!response.ok) {
@@ -41,10 +41,11 @@ app.post("/v1/chat/completions", async (req, res) => {
                 reply: JSON.stringify(data)
             });
         }
+console.log("最终回复：", data.choices?.[0]?.message?.content);
 
-        res.json({
-            reply: data.choices?.[0]?.message?.content || "没有返回内容"
-        });
+res.json({
+    reply: data.choices?.[0]?.message?.content || "没有返回内容"
+});
 
     } catch (e) {
         console.error(e);
